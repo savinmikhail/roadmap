@@ -4,6 +4,18 @@
 
 ---
 
+## 📊 Общий прогресс
+
+```dataview
+TABLE WITHOUT ID
+  file.link as "Этап",
+  length(filter(file.tasks, (t) => t.completed)) as "Выполнено",
+  length(file.tasks) as "Всего",
+  choice(length(file.tasks) > 0, round((length(filter(file.tasks, (t) => t.completed)) / length(file.tasks)) * 100), 0) + "%" as "Прогресс"
+FROM "stages"
+SORT file.name ASC
+```
+
 ## 📥 Как начать работу
 
 ### 1. Установи Obsidian
